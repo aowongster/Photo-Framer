@@ -8,6 +8,8 @@ import Image, ImageDraw
 
 import argparse
 
+# draw a border for my pictures!
+
 def parse_opts():
   """ argparser """
   parser = argparse.ArgumentParser(description="Get opts for framer")
@@ -22,22 +24,20 @@ def parse_opts():
 
   return parser.parse_args()
 
-# draw a border for my pictures!
 
 # argparse for color!
 def main(argv):
   """main func"""
   # match from sample image
   args = parse_opts()
-  try:
-    fname = args.file
-    mainImg = Image.open( fname )
-  except:
-    print "Bad Input file"
-    sys.exit(1)
 
+  fname = args.file
+  mainImg = Image.open( fname )
+
+  # get input image dimensions
   mw,mh = mainImg.size
 
+  # border set at 20%
   nw = int( mw * 1.2 )
   nh = int( mh * 1.2 )
 
@@ -59,6 +59,7 @@ def main(argv):
   # change file name and copy image type?
   name, ext = os.path.splitext(fname)
   ext = ext[1:]           # remove period
+  # PIL doesnt understand  jpg, so we change it to 'jpeg'
   if ext.lower() == 'jpg': ext = 'jpeg'
 
   # appending f for frame
