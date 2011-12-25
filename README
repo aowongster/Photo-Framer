@@ -1,0 +1,10 @@
+Python Picture Framer
+
+Make simple borders on images. From colors to backgrounds.
+
+Requires:
+
+PIL
+argparse
+
+Usage: python frame.py -f input file [-c frame_color [ -b background image]]
